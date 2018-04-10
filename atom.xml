@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>JM</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://blog.jmtung.cn/"/>
+  <updated>2018-02-10T13:19:14.245Z</updated>
+  <id>http://blog.jmtung.cn/</id>
+  
+  <author>
+    <name>JM</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>php静态属性的继承</title>
+    <link href="http://blog.jmtung.cn/2017/08/31/php%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%E7%9A%84%E7%BB%A7%E6%89%BF/"/>
+    <id>http://blog.jmtung.cn/2017/08/31/php静态属性的继承/</id>
+    <published>2017-08-31T13:13:55.000Z</published>
+    <updated>2018-02-10T13:19:14.245Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;若子类没有重写父类的静态属性,子类对静态属性的改动都会影响其父类和其他子类的静态属性&lt;/p&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://blog.jmtung.cn/tags/php/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://blog.jmtung.cn/2017/01/20/hello-world/"/>
+    <id>http://blog.jmtung.cn/2017/01/20/hello-world/</id>
+    <published>2017-01-20T13:16:20.000Z</published>
+    <updated>2018-02-10T13:20:37.383Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>

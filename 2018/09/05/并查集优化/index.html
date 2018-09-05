@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="数据结构," />
 
 
 
@@ -81,16 +81,25 @@
 
 
 
-<meta name="description" content="这个家伙很懒，什么都没留下">
-<meta property="og:type" content="website">
-<meta property="og:title" content="金毛想当个胖子">
-<meta property="og:url" content="http://blog.jmtung.cn/index.html">
+<meta name="description" content="接口123456// 并查集容量   int getSize();// 两元素是否有关联   boolean isConnected(int p,int q);// 两元素建立关联   void unionElements(int p,int q); 原始实现基于顺序表存储，键代表某数值，值表示该数值所在的集合。1234567891011121314151617181920212223242526">
+<meta name="keywords" content="数据结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="并查集优化">
+<meta property="og:url" content="http://blog.jmtung.cn/2018/09/05/并查集优化/index.html">
 <meta property="og:site_name" content="金毛想当个胖子">
-<meta property="og:description" content="这个家伙很懒，什么都没留下">
+<meta property="og:description" content="接口123456// 并查集容量   int getSize();// 两元素是否有关联   boolean isConnected(int p,int q);// 两元素建立关联   void unionElements(int p,int q); 原始实现基于顺序表存储，键代表某数值，值表示该数值所在的集合。1234567891011121314151617181920212223242526">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/uf1.png">
+<meta property="og:image" content="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/uf3.png">
+<meta property="og:image" content="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1536155853980.jpg">
+<meta property="og:image" content="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/uf4.png">
+<meta property="og:image" content="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/uf5.png">
+<meta property="og:image" content="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1536158398114.jpg">
+<meta property="og:updated_time" content="2018-09-05T14:50:43.875Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="金毛想当个胖子">
-<meta name="twitter:description" content="这个家伙很懒，什么都没留下">
+<meta name="twitter:title" content="并查集优化">
+<meta name="twitter:description" content="接口123456// 并查集容量   int getSize();// 两元素是否有关联   boolean isConnected(int p,int q);// 两元素建立关联   void unionElements(int p,int q); 原始实现基于顺序表存储，键代表某数值，值表示该数值所在的集合。1234567891011121314151617181920212223242526">
+<meta name="twitter:image" content="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/uf1.png">
 
 
 
@@ -120,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.jmtung.cn/"/>
+  <link rel="canonical" href="http://blog.jmtung.cn/2018/09/05/并查集优化/"/>
 
 
 
 
 
-  <title>金毛想当个胖子</title>
+  <title>并查集优化 | 金毛想当个胖子</title>
   
 
 
@@ -145,8 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -239,9 +247,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -271,9 +279,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/05/并查集优化/" itemprop="url">并查集优化</a></h2>
+          <h2 class="post-title" itemprop="name headline">并查集优化</h2>
         
 
         <div class="post-meta">
@@ -334,9 +340,7 @@
       
 
       
-        
-          
-            <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 并查集容量</span></span><br><span class="line">   <span class="function"><span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// 两元素是否有关联</span></span><br><span class="line">   <span class="function"><span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> q)</span></span>;</span><br><span class="line"><span class="comment">// 两元素建立关联</span></span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">unionElements</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> q)</span></span>;</span><br></pre></td></tr></table></figure>
+        <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 并查集容量</span></span><br><span class="line">   <span class="function"><span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// 两元素是否有关联</span></span><br><span class="line">   <span class="function"><span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> q)</span></span>;</span><br><span class="line"><span class="comment">// 两元素建立关联</span></span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">unionElements</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> q)</span></span>;</span><br></pre></td></tr></table></figure>
 <h1 id="原始实现"><a href="#原始实现" class="headerlink" title="原始实现"></a>原始实现</h1><p>基于顺序表存储，键代表某数值，值表示该数值所在的集合。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UnionFind1</span> <span class="keyword">implements</span> <span class="title">UnionFind</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] id;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UnionFind1</span><span class="params">(<span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line">        id=<span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;id.length;i++)</span><br><span class="line">            id[i]=i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (p&lt;<span class="number">0</span>||p&gt;=id.length)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"p is out of limit."</span>);</span><br><span class="line">        <span class="keyword">return</span> id[p];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> find(p)==find(q);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unionElements</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> pID=find(p);</span><br><span class="line">        <span class="keyword">int</span> qID=find(q);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (pID==qID)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;id.length;i++)</span><br><span class="line">            <span class="keyword">if</span> (id[i]==pID)</span><br><span class="line">                id[i]=qID;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h2><p>由于使用数组索引查找元素，查找时间复杂度为<code>O(1)</code>，合并需要遍历整个数组，时间复杂度为<code>O(n)</code></p>
 <h1 id="树实现"><a href="#树实现" class="headerlink" title="树实现"></a>树实现</h1><p><img src="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/uf1.png" alt="并查集树结构" title="并查集结构"><br>基于数组构建树，数组键表示元素本身，值代表指向的父节点索引，该树与平时的树结构不同，由子节点指向父节点，代表着子节点与父节点是关联的关系，树的根部则指向自身。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UnionFind2</span> <span class="keyword">implements</span> <span class="title">UnionFind</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用一个数组构建一棵指向父节点的树</span></span><br><span class="line">    <span class="comment">// parent[i]表示第一个元素所指向的父节点</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] parent;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">UnionFind2</span><span class="params">(<span class="keyword">int</span> size)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        parent = <span class="keyword">new</span> <span class="keyword">int</span>[size];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化, 每一个parent[i]指向自己, 表示每一个元素自己自成一个集合</span></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; size ; i ++ )</span><br><span class="line">            parent[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSize</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> parent.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查找过程, 查找元素p所对应的集合编号</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> p)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(p &lt; <span class="number">0</span> || p &gt;= parent.length)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"p is out of bound."</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 不断去查询自己的父亲节点, 直到到达根节点</span></span><br><span class="line">        <span class="comment">// 根节点的特点: parent[p] == p</span></span><br><span class="line">        <span class="keyword">while</span>(p != parent[p])</span><br><span class="line">            p = parent[p];</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 查看元素p和元素q是否所属一个集合</span></span><br><span class="line">	<span class="comment">// 判断两元素是否连接只需对比两节点的根节点，若根结点相等，则说明两节点是同一集合，否则不在同一集合内。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isConnected</span><span class="params">( <span class="keyword">int</span> p , <span class="keyword">int</span> q )</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> find(p) == find(q);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 合并元素p和元素q所属的集合</span></span><br><span class="line">	<span class="comment">// 合并两节点集合很简单，只需把其中一个节点的根节点指向另一节点的根节点即可</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unionElements</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> q)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> pRoot = find(p);</span><br><span class="line">        <span class="keyword">int</span> qRoot = find(q);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>( pRoot == qRoot )</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        parent[pRoot] = qRoot;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
@@ -357,8 +361,6 @@
 <h2 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h2><p>对后4种并查集,输入容量千万，进行一千万次合并集合和查询关联操作的耗费时间对比</p>
 <p><img src="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/1536158398114.jpg" alt="enter description here"></p>
 
-          
-        
       
     </div>
     
@@ -373,316 +375,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.jmtung.cn/2018/08/08/记录下这半年的求医经历吧/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="金毛想当个胖子">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icon.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="金毛想当个胖子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/08/记录下这半年的求医经历吧/" itemprop="url">记录下这半年的求医经历吧</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T19:24:44+08:00">
-                2018-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
           
-            
-          
-
-          
-          
-             <span id="/2018/08/08/记录下这半年的求医经历吧/" class="leancloud_visitors" data-flag-title="记录下这半年的求医经历吧">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="出现症状"><a href="#出现症状" class="headerlink" title="出现症状"></a>出现症状</h1><p>年前立了个flag:过完年要胖10斤，年初八左右称了下，63公斤，中了6斤，有点小兴奋，没想到几个月后长的这些不但都没了，还倒削了几公斤<br>开学前一周，还在家，发现大便有点软，还算成型，没太在意，对新学期有太多期望，希望自己的一系列计划都能实现</p>
-<h1 id="初看门诊"><a href="#初看门诊" class="headerlink" title="初看门诊"></a>初看门诊</h1><p> 三月初，开学两周，连续拉肚子一周，平时最见效的腹可安片都止不住。感觉情况不妙，找校医，给开了双歧杆菌，健胃消食片，腹可安片，依然无效。跟朋友和家人沟通情况，去了人民医院挂了消化科门诊，当初也想不到后面要进出这个地方这么多次。第一次去大医院看病甚至有点小激动，门诊主要由两个主任轮流坐诊，轮到我，简单描述下症状，因为刚过完年，患肠胃炎来看病的不少，医生按经验开了个礼拜药先吃着看看，回去吃了两三后没拉肚子了，但大便稀软黄黑相间，我认为好得差不多了，百度搜着大便情况自己去药店买了两盒肠炎宁，吃了没用，还是乖乖找医生吧。又去了趟医院，医生开两周药，并被告知下次没好再来就给我开个肠镜检查下了，当初自认为吃完这药就好了，肠镜那些没太在意，这波回去又有新情况，肚子会无端端痛起来，不同于拉肚子的那种瞬间剧痛，像用辣椒粉撒在伤口上那样，尤其是卧床睡觉，晚上常常会痛到一两点才入睡，代码也敲不动，视频也看不下去了，开始在网上搜索肠镜相关 <a href="https://www.zhihu.com/question/30188170" target="_blank" rel="noopener">接受肠镜检查是一种怎么样的体验?</a><br>当初看到这里面的回答吓得一愣一愣的,药已经吃完了，思考良久，也罢也罢，小命要紧，也就当作人生新体验吧，第三次去门诊，依然13号室<br>    “医生给我开个肠镜吧”<br>    “好嘞!”<br>没麻醉，500块，还行<br>开学第一周称了体重，60公斤多一点点，吐槽益华的秤是假的。</p>
-<h1 id="第一次肠镜"><a href="#第一次肠镜" class="headerlink" title="第一次肠镜"></a>第一次肠镜</h1><p>肠镜前天只让吃流质，在三饭点了碗不要皮蛋瘦肉的皮蛋瘦肉粥和一碗菜干粥(这辈子打死都不会再点这的菜干粥了，苦的!)，饭堂阿姨投来异样的眼光。晚上8点禁食。晚上10点开始喝泻药，这泻药呢，长下面那样，叫复方聚乙二醇电解质散,是我活到现在喝过最难喝的东西，三包泡四杯750ml的水,2小时内喝完</p>
-<p><img src="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/258690267.jpg" alt="" title="复方聚乙二醇电解质散 了解一下?"><br>    起初以为给人喝的东西味道不会差到哪去，第一口下去，味道还行，有一点轻微的凤梨味，几口下去后，我草这简直是咸的铁锈水啊，后面两杯我也不知道怎么喝下去的，其中一杯药粉下多了味道巨浓，吐了两口，泻药的效果还是很明显的，那晚折腾到凌晨三点半，一盒抽纸用光了，奄奄一息睡了两三个小时闹钟蹦醒又奔去医院做镜。<br>    内镜室一早就来了些病人，脸色不太好一看就知道昨晚没睡好23333(别问我怎么知道的)。换好穿档裤后进去做镜了，做镜的医生小哥很年轻30岁那样，隔壁还有一群护士和助理阿姨(为什么都是女的!???)，羞耻片段跳过，最痛苦的时候，是在那根管在你肠道绕弯的时候，像针扎的刺痛，忍不住喊着痛，隔壁助理阿姨一直在安慰我忍一下深呼吸就好，镜子来到了一处直角弯死活过不去，阿姨开始摁我肚子帮助管子通过，医生吐槽道“靓仔你的肠有点曲啊”，阿姨见单手摁压没用，开始用双手使劲，在我的镜头角度看，阿姨这姿势像是准备给我肚子做心肺复苏???肚子本来就痛得要命，阿姨这一按妈耶我胆汁都吓出来了，然后平时不存在的八块腹肌突然团聚成一块跟阿姨的如来神掌抗衡(像下面那样)。阿姨就开始训我叫我别撑着不然镜子过不了，然而我也是控记不住我记几啊，不知过了多久管子终于完成了一个完美的直角飘移过弯。<br>    “靓仔，你结肠里面有两处烂了要不要剪去做病理化验呀，一处一百多块”<br>    “剪剪剪”<br>退镜，检查结束<br>扶着腰出来等候室坐了半个小时，腹部一直隐隐作痛，不停的放屁，等没那么痛了去外面吃了碗有皮蛋瘦肉的皮蛋瘦肉粥 真香!</p>
-<p><img src="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/u=358573167,3335433787&amp;fm=27&amp;gp=0.jpg" alt="腹肌与阿姨的如来神掌" title="腹肌与阿姨的如来神掌"><br>肠镜检查诊断乙状结肠炎，回盲瓣糜烂。拿着报告给门诊医生看，眉头一皱<br>“这病问题大吗?”<br>“不大，开一个月药吃，再回来复诊”<br>此时四月末，做完肠镜几天后称了体重，58.5公斤</p>
-<p><img src="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/webwxgetmsgimg.jpeg" alt="enter description here" title="两周的药 袋子里全是"></p>
-<h1 id="第二次肠镜"><a href="#第二次肠镜" class="headerlink" title="第二次肠镜"></a>第二次肠镜</h1><p>主任还是很牛逼的，开的药吃了三天，肚子再也没有任何不适了，预感着病快好了，吃饭什么的更香了。很不幸，一个月后，我又出现在了门诊大楼二楼13室内，肚子是不痛了，但大便稀烂不成型，体重也一直在降，主任我又想你了。开一周药，并被告知如果还不好，可能问题不只是出在结肠上了，更坏的情况是小肠也gg了，得考虑做小肠镜，又蒙圈了。<br>还有个情况，这波看医生前，出趟远门，在动车上吃了两罐泰奇八宝粥，到酒店后，极度不适，躺了很久很久才舒缓过来，八宝粥是贼难消化的，甚至怀疑小肠病变在这之前就有了。<br>科普一下，我做的两次肠镜都指的是纤维结肠电子镜检查，局限于大肠，而大肠之上的小肠普通的肠镜是不能够进入检查的，毕竟小肠很脆弱，一言不合就会捅穿出孔，而现今检查小肠主要是通过小肠镜，胶囊内镜，小肠增强CT等方法，小肠镜分经肛和经口两种，对操作者技术要求很高，不然一言不合就捅个并发症，但对检查小肠来说，小肠镜是相对比较全面的检查方式。<br>死命查相关资料，在人民医院官网上面查费用，OMG，双气囊小肠镜一次4k，经肛和经口算两次,double kill!而且，这只是单单做内镜检查的费用，麻醉材料治疗的什么乱七八糟的都没算<br>然后刚好那时没什么课回家，跟家人沟通，老妈听到价格和看我这么久没好，想叫我去开平的中心医院看，说有个医生看肠胃很好的balabala的。拒绝。<br>一周后<br>“医生，现在大便依然不成型”<br>“再做个肠镜吧，看下旧患好了没，好了的话就考虑做小肠镜”<br>此刻满脑子复方聚乙二醇电解质散<br>“医生，上次那泻药太难喝了，能不能换种”<br>“OK！No趴笨!”<br>内镜室的小姐姐又拿出那个大水杯<br>“8点吃药，12点前喝6杯白开水”<br>“。。。”<br>又是难熬的一天，喝流质，玫瑰园的白粥是真的白粥，连盐都不下!吃吐了。<br>吃了药，第一第二杯水，勉强灌下，第三杯就不行了。就像吃鸡扒一样，一份好吃，但要求你2个小时内吃6份，你不投降，你的胃也举白旗了。然后，那晚，我等到11点，没反应，大概吃了假药???然后11点半到12点多，上了三次厕所，然后<br>就没了<br>没了<br>了<br>我屯好的纸巾似乎在嘲笑我<br>次日，内镜室，肠道准备不充分，重新清肠道<br>“医生，再给我开一剂泻药吧，我要复方聚乙二醇电解质散，上次开的泻药没凑效”<br>“OK！No趴笨!”<br>复方聚乙二醇电解质散就是牛逼，一泻千里，但没有增强我对它的好感，再一次阳台数星星<br>给我做镜的依然是那位年轻的医生小哥，还好隔壁的助理不再是阿姨了，是位年轻点的老姐姐<br>还是原来的痛感，还是原来的腹胀，但这次没痛到喊，大概已经习惯了吧?老姐姐手法很温柔，管子一下子就漂移入弯。用户体验良好。<br>“剪吗”<br>“剪!”<br>退镜，检查结束。<br>肠镜检查诊断:回盲瓣慢性炎症 乙状结肠痊愈了 (手动埋个伏笔 回盲瓣可以理解为大肠和小肠的交接部位 不要慌，问题还tm不是很大)<br>“开一周药 没好转可以考虑小肠镜”<br>“OK！No趴笨!”</p>
-<p>六月末，考试月到了，称下体重，55公斤，比木杰兄轻，略崩溃</p>
-<h1 id="医保啊医保"><a href="#医保啊医保" class="headerlink" title="医保啊医保"></a>医保啊医保</h1><p>七月，剩毛概没考了，回家吃点清淡的补补，顺便把医保的转诊给办理了，老爸给我医保定点的医院的医生打电话询问转诊手续，被告知在那里办不了，得去中心医院，我又经过网上查询，发现一般医院不会随便给你办转诊。药吃完了，没好转，打算过两三天回江门找主任玩耍。老妈似乎还不太信任江人的医生，记得好像时周五早，便血，后两天持续腹痛，站起来就有拉肚子的感觉，老妈见到情况，方了，叫我赶紧回去找医生，做什么检查花多少钱都好，尽早。回江门，这回坐门诊的不是我经常看的梁主任，是另一位张主任，很神奇，来找张主任看病的病人很少，那个下午几乎没什么病人，这就给了我更多跟医生交流的时间。</p>
-<p>“你这个病呢，还是要做个小肠镜查明情况，转诊办好了吗”<br>“没有，我家那边办这个手续比较复杂，但我看政策没办理转诊手续报销也就少一半，不至于一点也没”<br>“你这样渣都没得剩的哇(医生原话)，我建议你还是跟家人沟通好”</p>
-<p>call 老妈<br>“医生叫我们考虑清楚，没办转诊亏很多”<br>老妈回话大意我家那边情况实在难写转诊证明，办不到，少报一点就少报一点</p>
-<p>to 主任<br>”跟家人沟通完了，我们决定还是不办转诊直接入院吧“<br>”我站你的角度都觉得亏啊，你们最好试试吧，少一半已经很多的了，这样吧，你再跟你家人说下“</p>
-<p>call 老妈<br>”医生说再试试吧，医生都替我觉得亏”<br>“不是不想试，实在是很难办这手续啊，你直接跟医生说吧，多少钱都做，自费都行，又不是没钱”</p>
-<p>to 主任<br>“医生，我跟家人沟通并再三决定了，就是自费也做吧”<br>“那好吧，已经劝不动你们了”<br>“喂!周光平吗，我这有个21岁的小孩要做小肠镜的你收不收啊?”</p>
-<p>主任叫我上住院部找我的主治医生周医生，交代了基本情况后，没问题，然后我表达了想早点做完检查和治疗的意愿后(下周要考毛概了大哥，当时也没想到要住这么久院)，医生说不着急，除非有消化道大出血，其他问题不大的，晚一个礼拜来做检查也不迟，然后再问我医保问题，还是建议我办理转诊手续，有了医生的说明，再call老妈，跟她说好考完试回家办转诊，办不了就直接回江门入院，达成协议。三通电话才搞定老妈。</p>
-<p>考完最后一门毛概就溜回开平，次日到开平市中心医院挂个内科的号找医生开转诊证明</p>
-<p>“医生你好，我在江门的医院做了检查balabala，现在江门的医生建议我做个小肠镜查清楚，但是小肠镜只有在蓬江的三家医院有得做，医生叫我回来找你们开个转诊证明好减少下治疗费用的负担”<br>“没有这个东西写”（早有预想到这样的结果，但这态度和理由实在…当我傻逼呢?）</p>
-<p>好吧我信了，断然离开。不甘心，去社保局问工作人员</p>
-<p>“转诊是有的，不过你要找医生写个证明给我们就能办理了”<br>“可是我找医生，他说没这个东西写”<br>“这就不知道了，这个医生说了算的”<br>好的，我滚</p>
-<p>科普一下转诊和为什么多数医生不让写转诊。</p>
-<ul>
-<li>经低级别医院诊断，因病人病情过于严重超出本院医治能力或者因本院设备或技术原因无法为患者提供相应治疗而转向高级别医院进行治疗，这时就用到转诊了。可能有人问不办转诊直接转去行不行啊，当然行啊！报销比例降50%而已。转诊需要多人签名盖章，所以办理巨麻烦，通常要找关系(中国特色嘛)。政府文件白底黑字写明有这个制度，开平市中心医院那位医生请给我解释一下为什么会没有这个东西写？你直接拒绝我不给我写我还能理解，我脑子还是能用的。</li>
-<li>为什么医生直接拒绝我还能理解呢?找医生前做足了功课，一般多数医生不会轻易给你写转诊，原因有两点：<ul>
-<li>虽说医保扣的是国家的钱，但是医院科室都被划好了报销额度，如果某个时期的额度超了会扣工资的，而且，如果我办了转诊，去江门看病，看病报销那部分还是归属开平中心医院的，这相当于开平中心医院给钱我去江门看病，亏本生意，做不得。除非真的有危急病人要转诊，或者找关系，一般都不会给你开。</li>
-<li>你这病在本院治不好，得跑去其他医院治疗，有点打本院脸的意思，就是医疗技术还是相对落后。</li>
-</ul>
-</li>
-</ul>
-<p>而经此事，让我气愤的主要是开平的医生对我撒了谎，以及，我买了医保，却没有享受到应有的权力，我满足了转诊的条件却办不了转诊，很无力。也罢，回江门，入院。</p>
-<h1 id="小肠镜"><a href="#小肠镜" class="headerlink" title="小肠镜"></a>小肠镜</h1><p>入院第二天早，各种检查，护士姐姐拿着一捆试管(参考下捆装火腿肠)来抽血，抽完手都麻了，主治医生带个实习医生姐姐来问病情，实习医生各种掐按，酸爽。住院部什么病人都有，虽然写着消化内科住院部，各种癌，败血症，把肚子喝成孕妇样吵着找医生办出院的也有，然而像我一样年轻的还没见到。<br>预约周一小肠镜，清肠的缘故，周日中午点了份瘦肉粥，瘦肉给了木杰吃了，他刚吃完，医生来电话，白细胞高，推迟小肠镜，我丢，木杰赶紧把瘦肉吐出来。后面一周每天早上去吊针水消炎降白细胞。<br>次周，医生来电，复查白细胞正常，具备条件做镜，预约次日小肠镜。<br>大概医生们发现单纯的复方聚乙二醇电解质散清肠道效果不佳，现在改成番泻叶+复方聚乙二醇电解质散双管齐下。周日那天喝了一下午番泻叶，许久没效果，又怀疑是假药，放心去喝粥，刚点了份白粥，好家伙，肚子绞痛，忍忍，喝两口粥，不行了</p>
-<p>“阿姨我的粥别倒掉!我等下回来喝!”<br>阿姨一脸茫然.jpg</p>
-<p>晚上八点上一包复方聚乙二醇电解质散，有了上三次喝泻药的教训，买了几颗棒棒糖，喝到想吐的时候舔一舔，效果还不错，不过别买凤梨味的，凤梨味很容易又让你联想起复方聚乙二醇电解质散的味道(吐)。看着明天台风到了，天气不太行，早早洗澡去医院睡，这天是7月22日，这时才是真正意义的住院。隔壁床胆结石的老叔不听医生话，偷偷出去吃硬饭，回来吐了半小时，被医生训话了，听着难受。特意调了5点多的闹钟，因为周一早6点还要来两剂泻药，没想到，比闹钟还早的，是护士姐姐，熟睡中被人拍醒，扎了一针，一脸懵逼。打水冲泻药，我草!人民医院的水全是沸水，没有温的。7月23日凌晨5.30，阴天，有个穿着短裤拖孩手臂上还扎着留针的疯子骑着hellobike在找美宜佳，终于，靠地王那边找到了一间，两大瓶康师傅，付款时老板看我眼神似乎有点不对劲，我没艾滋、不吸毒。药效还行，泻个不停。9点钟，医生例行查房，简单问下情况，9点多，老妈来了，看着我肚子说一点肉都没，也就少了几块肌肉而已。吊着葡萄糖和转化糖，之后就是漫长的等待。<br>12点半，护士来通知了，可以下去了，并把一管针绑手臂扎进留针里，这一剂应该是麻药之一。内镜室，老地方，麻醉医生拉进去签字，家属也要签，告知风险。做镜的医生还没来，身边一位位患者都进去了，剩我一人在那干等。啪一下门打开了，一个熟悉的身影在眼前走过，没戴眼睛看不清，然后里面的助手阿姨叫了声：“周光平，你终于来了!”。惊!给我做镜的医生也是我的主治医生，还是那个室，这次围的人更多了，各种护士助手，头前站着麻醉医师，还有其他消化内科的医生站隔壁看，周医生把老妈叫进来，签名，告知风险，再跟我确认，告知风险，无误，开工。麻醉医师给我贴满电极，检测生命体征，左侧躺，屈腿，麻醉医师给我罩上一个呼吸面罩，吸了两三口，咦，我没睡耶嘻嘻嘻，还在想着麻醉医师要用什么方法把我弄睡，还在思考助手怎么把那两个苹果大的圈圈塞进我的嘴，然后没意识了，像什么事情都没发生那样。<br>隐隐意识到到有人在推我走(后来据我妈说我被推出来时一直在念abc???)，然后有人拍醒我叫我挪到病床上（那时我已经被护士推回病房了）。下午五点多做完，完全醒来应该是晚上六七点那样，舌头很麻，喉咙很干很痛，妈在床前，鼻插着氧气，各种电极量压器都在，吊着中午没有吊完的针水，护士又拿来几包针水。将近四个小时的全麻，晚上一直处于睡醒睡醒的迷糊状态，禁食，水也不能喝，针水吊多了，明显感到膀胱有尿液却尿不出来，非常难受，那晚我妈也没睡好，老被我和检测机叫醒，隔壁床老叔估计也陪我通宵了。</p>
-<p><img src="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/718386103.jpg" alt="做完镜第二天早 辛苦了" title="做完镜第二天早 辛苦了"></p>
-<h1 id="你好呀-克罗恩"><a href="#你好呀-克罗恩" class="headerlink" title="你好呀 克罗恩"></a>你好呀 克罗恩</h1><p>7月24早，有点精神了，第一时间拿起手机，看检查结果<br>慢性浅表性胃炎伴糜烂(窦)、十二指肠炎症、小肠多发性溃疡、回盲瓣溃疡<br>牛逼啊，从胃坏到大肠，难怪两次的结肠镜子回盲瓣一直好不了，最严重的溃疡在下接回盲瓣的回肠。同时心头一凉，这描述越看越像之前了解过的可能的疾病的一种 —— <a href="https://www.msdmanuals.com/zh/%E9%A6%96%E9%A1%B5/%E6%B6%88%E5%8C%96%E9%81%93%E5%8A%9F%E8%83%BD%E9%9A%9C%E7%A2%8D/%E7%82%8E%E7%97%87%E6%80%A7%E8%82%A0%E7%97%85-ibd/%E5%85%8B%E7%BD%97%E6%81%A9%E7%97%85" target="_blank" rel="noopener">克罗恩(CD)</a>，尤其是小肠多发溃疡，问题似乎有点大，然后混迹各种肠道炎症疾病贴吧，越看越方。<br>医生查房，问下基本情况，也没啥因做镜引发的并发症。<br>“医生，我儿子这病严重吗?”<br>“何为之严重?癌症吗?”<br>“emm……”<br>“这倒没有，不过这病挺棘手的，不易治好，我们医生也比较头疼的，再等等送去广州的病理化验结果吧”（这时医生也大概知道是哪几种病了吧）<br>不好治愈。。。越听越像克<br>25日 能勉强短距离活动，让吃东西，白粥都很香<br>26日 出病房门瞅一眼，看远一点，感觉每块砖都在跳动，赶紧回去躺，本院的病理活检出，中度慢性炎，肉芽组织增生<br>27日 医生查房，待观察，等广州病理结果 能出门吃东西了，不过还是有点晃，回来的路上好多了<br>28日 广州病理结果出(后来看单子应该是查结核的)，阴性，医生再让去结核防治中心查下ppd（这时应该排除剩下肠结核和克罗恩了）<br>31日 ppd结果正常 量体重 53kg 过年到现在 20斤没了，瘦的主要原因是小肠有溃疡导致吸收能力下降，同时多处炎症，能量花去打仗消炎了<br>“医生，现在大概能排除掉肠结核了吧”<br>“嗯”<br>试探性地问：“能大概确诊是什么病了吗”<br>医生说出了我这辈子最讨厌的三个字。<br>初诊克罗恩。医生找主任商量开药<br>8月1日 张主任过来查床，说明主治的医生没有问题，可以确诊(凉凉)，并解释说明这病没有特效药balabala的，类克也不考虑了毕竟一针6k，激素也不考虑了毕竟我太年轻，美莎拉秦了解一下?嗯，我都懂。老妈一脸懵逼，我还要再解释一趟，划明重点这不是绝症，我发现得早，不虚。<br>2号 开始吃美莎(莎尔福) 观察 主任带一群医生查房路过，有个女医生瞅了眼，问17床患者这么年轻怎么在这住了这么久啊，其他医生回道：“CD啊”(苦笑)<br>3号 验血正常 不打针了 劝老妈回家了<br>4、5、6、7请假回学校待 每天早去领药 顺便称下体重 发现开始反弹!<br>8号 就是今天，一切指标正常，但需要长期服药抑制，医生给办出院了 量体重 54kg<br>财务结算 2w9 医保给报了1w左右 说不痛都是假的</p>
-<p><img src="http://image.jmtung.cn/%E5%B0%8F%E4%B9%A6%E5%8C%A0/598389084.jpg" alt="美莎拉秦了解一下 饭前来两颗" title="美莎拉秦了解一下 饭前来两颗"></p>
-<p>也谈谈对这个病的认知，克并非绝症，也不会影响我的寿命，只是像高血压类的疾病一直在你身边，它心情好的时候我可以过得很滋润，它心情不好的时候我的肠道偶尔闹闹小脾气之类的。病因不明，诊断靠排除，排剩那个就是克罗恩，运气差一点不小心就得了（中国发病率十万分之一），万幸的是我发现得早，病情在初期，吃药主要是增长我的缓解期，靠吃药抑制再管住自己的嘴巴别瞎吃东西并不会影响我的生活，其实我幸运得多，加过一些患者群，有十几岁确诊的，有中后期活动期患者靠鼻饲维持生活的，更严重的，肠梗，切除部分肠道，做造口，像我这种就瘦个几斤便软能跑能跳还能敲几行代码的更应该庆幸吧。国外的主要治疗方案是降阶梯治疗，开始上猛的生物制剂（类克），病情好转后改用传统口服药物抑制，而国内的治疗理念大概是升阶梯，先上小的，不行在一步步上猛的，毕竟穷嘛。。。一年类克10w+还没医保又有多少人抗得住呢。也见过症状像我一样小肠多发溃疡确诊小肠CD的，吃四个月美莎回去复查溃疡全好了，诊断改为肠易激，也希望我能像这位兄得一样幸运吧。一切随时间去验证。</p>
-<h1 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h1><p>江人消化内科的医护人员都贼好人的，说话又好听，每个护士姐姐都想娶回家的样子(逃<br>谢谢建议我做小肠镜的梁主任<br>谢谢多次劝我回家办转诊的张主任和主治医生周光平，虽然最终还是办不成。<br>谢谢老妈老爸还有临夜来看我的亲戚<br>想不到要住这么久，谢谢给我送衣服和生活用品来的木杰兄</p>
-<h1 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h1><p>身体长时间出异样，趁早就医吧，就医不可怕，可怕的是你纠结就医耽误的最佳治疗时间<br>在你掌握的医疗知识不比医生多的时候，请完全信任你的主治医生，如果你不能信任你的医生，换吧<br>跟家人的沟通是一件麻烦事，像跟其他程序员解释为什么php是世界上最好的语言一样难(逃<br>在外工作无论如何，请为你自己买一份医保，定个好医院，如果经济收入充裕的话，再来份商业大病险（尤其考虑给父母卖）。小病国家可以搞定，大病真要来的时候靠国家的医保有时扛都扛不起。<br>住院这段时间见过太多喝酒喝坏肠胃的，酒要少沾<br>每个家庭应该预留一部分活动资金应对紧急意外情况<br>注意饮食是真的<br>三甲医院只是个噱头，很难准确评估医院的综合水平的，感觉单在三甲里面还能划分好几个段位<br>消化内科的护士姐姐日常问候病人：“今天你大便了么，拉了几次?”(逃</p>
-<h1 id="未完待续-长期记录"><a href="#未完待续-长期记录" class="headerlink" title="未完待续 长期记录"></a>未完待续 长期记录</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.jmtung.cn/2017/08/31/php静态属性的继承/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="金毛想当个胖子">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icon.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="金毛想当个胖子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/31/php静态属性的继承/" itemprop="url">php静态属性的继承</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T21:13:55+08:00">
-                2017-08-31
-              </time>
+              <a href="/2018/08/08/记录下这半年的求医经历吧/" rel="next" title="记录下这半年的求医经历吧">
+                <i class="fa fa-chevron-left"></i> 记录下这半年的求医经历吧
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/08/31/php静态属性的继承/" class="leancloud_visitors" data-flag-title="php静态属性的继承">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>若子类没有重写父类的静态属性,子类对静态属性的改动都会影响其父类和其他子类的静态属性</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticVariableInheritance</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> $instance;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">setInstance</span><span class="params">($ins)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">static</span>::$instance = $ins;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">static</span>::$instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub1</span> <span class="keyword">extends</span> <span class="title">StaticVariableInheritance</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//--------------------------子类的静态属性会影响父类的静态属性--------------------------//</span></span><br><span class="line">Sub1::setInstance(<span class="string">'jm'</span>);</span><br><span class="line"><span class="keyword">echo</span> StaticVariableInheritance::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// jm</span></span><br><span class="line"><span class="keyword">echo</span> Sub1::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// jm</span></span><br><span class="line"><span class="comment">//--------------------------子类的静态属性也会影响其他子类的静态属性--------------------------//</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub2</span> <span class="keyword">extends</span> <span class="title">StaticVariableInheritance</span></span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">Sub2::setInstance(<span class="string">'jmtung'</span>);</span><br><span class="line"><span class="keyword">echo</span> StaticVariableInheritance::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// jmtung</span></span><br><span class="line"><span class="keyword">echo</span> Sub1::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// jmtung</span></span><br><span class="line"><span class="keyword">echo</span> Sub2::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// jmtung</span></span><br></pre></td></tr></table></figure>
-<p>若子类重写了父类的静态属性,该静态属性只属于当前类,对父类或其他子类没有影响</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StaticVariableInheritance</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> $instance;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">setInstance</span><span class="params">($ins)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">static</span>::$instance = $ins;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">static</span>::$instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub1</span> <span class="keyword">extends</span> <span class="title">StaticVariableInheritance</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> $instance;</span><br><span class="line">&#125;</span><br><span class="line">Sub1::setInstance(<span class="string">'jm'</span>);</span><br><span class="line"><span class="keyword">echo</span> StaticVariableInheritance::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// jm</span></span><br><span class="line"><span class="keyword">echo</span> Sub1::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// null</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub2</span> <span class="keyword">extends</span> <span class="title">StaticVariableInheritance</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> $instance;</span><br><span class="line">&#125;</span><br><span class="line">Sub2::setInstance(<span class="string">'jmtung'</span>);</span><br><span class="line"><span class="keyword">echo</span> StaticVariableInheritance::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// jm</span></span><br><span class="line"><span class="keyword">echo</span> Sub1::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// jmtung</span></span><br><span class="line"><span class="keyword">echo</span> Sub2::getInstance().<span class="string">"\n"</span>;</span><br><span class="line"><span class="comment">// null</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -692,149 +414,38 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.jmtung.cn/2017/01/20/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="金毛想当个胖子">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/icon.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="金毛想当个胖子">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/01/20/hello-world/" itemprop="url">Hello World</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-20T21:16:20+08:00">
-                2017-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/01/20/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
+    <div class="post-spread">
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
 
-          
-        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -842,6 +453,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDA3Mi8xMDYxMA=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -862,8 +482,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -953,6 +582,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-number">1.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原始实现"><span class="nav-number">2.</span> <span class="nav-text">原始实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#效率"><span class="nav-number">2.1.</span> <span class="nav-text">效率</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树实现"><span class="nav-number">3.</span> <span class="nav-text">树实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#效率-1"><span class="nav-number">3.1.</span> <span class="nav-text">效率</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于size的优化"><span class="nav-number">4.</span> <span class="nav-text">基于size的优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#效率-2"><span class="nav-number">4.1.</span> <span class="nav-text">效率</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于rank的优化"><span class="nav-number">5.</span> <span class="nav-text">基于rank的优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路径压缩优化"><span class="nav-number">6.</span> <span class="nav-text">路径压缩优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#极致路径压缩"><span class="nav-number">7.</span> <span class="nav-text">极致路径压缩</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#性能"><span class="nav-number">7.1.</span> <span class="nav-text">性能</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1086,6 +731,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1114,6 +763,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 

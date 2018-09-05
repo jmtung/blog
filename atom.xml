@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jmtung.cn/"/>
-  <updated>2018-08-09T03:34:30.750Z</updated>
+  <updated>2018-09-05T14:50:43.875Z</updated>
   <id>http://blog.jmtung.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>并查集优化</title>
+    <link href="http://blog.jmtung.cn/2018/09/05/%E5%B9%B6%E6%9F%A5%E9%9B%86%E4%BC%98%E5%8C%96/"/>
+    <id>http://blog.jmtung.cn/2018/09/05/并查集优化/</id>
+    <published>2018-09-05T14:49:10.000Z</published>
+    <updated>2018-09-05T14:50:43.875Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;接口&quot;&gt;&lt;a href=&quot;#接口&quot; class=&quot;headerlink&quot; title=&quot;接口&quot;&gt;&lt;/a&gt;接口&lt;/h1&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据结构" scheme="http://blog.jmtung.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>记录下这半年的求医经历吧</title>

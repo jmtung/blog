@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jmtung.cn/"/>
-  <updated>2019-06-29T15:33:49.256Z</updated>
+  <updated>2019-07-04T16:40:18.664Z</updated>
   <id>http://blog.jmtung.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>trim过滤不掉的空白字符</title>
+    <link href="http://blog.jmtung.cn/2019/07/04/trim%E8%BF%87%E6%BB%A4%E4%B8%8D%E6%8E%89%E7%9A%84%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6/"/>
+    <id>http://blog.jmtung.cn/2019/07/04/trim过滤不掉的空白字符/</id>
+    <published>2019-07-04T15:38:27.000Z</published>
+    <updated>2019-07-04T16:40:18.664Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上两周老大丢个bug过来：过滤学生名单学生名字两侧的空格。我就想还有&lt;code&gt;trim&lt;/code&gt;搞不定的空白符吗，吓得我赶紧翻下&lt;code&gt;trim&lt;/code&gt;的说明书：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;此函数返回字符串 &lt;code&gt;str&lt;/code&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="php" scheme="http://blog.jmtung.cn/tags/php/"/>
+    
+  </entry>
   
   <entry>
     <title>这四年</title>

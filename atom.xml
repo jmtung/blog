@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jmtung.cn/"/>
-  <updated>2019-07-04T16:41:49.071Z</updated>
+  <updated>2019-07-04T16:42:37.282Z</updated>
   <id>http://blog.jmtung.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://blog.jmtung.cn/2019/07/04/trim%E8%BF%87%E6%BB%A4%E4%B8%8D%E6%8E%89%E7%9A%84%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6/"/>
     <id>http://blog.jmtung.cn/2019/07/04/trim过滤不掉的空白字符/</id>
     <published>2019-07-04T15:38:27.000Z</published>
-    <updated>2019-07-04T16:41:49.071Z</updated>
+    <updated>2019-07-04T16:42:37.282Z</updated>
     
     <summary type="html">
     
@@ -34,7 +34,9 @@
 &lt;li&gt;“\n” (ASCII &lt;em&gt;10&lt;/em&gt; (&lt;em&gt;0x0A&lt;/em&gt;))，换行符。&lt;/li&gt;
 &lt;li&gt;“\r” (ASCII &lt;em&gt;13&lt;/em&gt; (&lt;em&gt;0x0D&lt;/em&gt;))，回车符。&lt;/li&gt;
 &lt;li&gt;“\0” (ASCII &lt;em&gt;0&lt;/em&gt; (&lt;em&gt;0x00&lt;/em&gt;))，空字节符。&lt;/li&gt;
-&lt;li&gt;“\x0B” (ASCII &lt;em&gt;11&lt;/em&gt; (&lt;em&gt;0x0B&lt;/em&gt;))，垂直制表符。
+&lt;li&gt;“\x0B” (ASCII &lt;em&gt;11&lt;/em&gt; (&lt;em&gt;0x0B&lt;/em&gt;))，垂直制表符。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
     
     </summary>
     

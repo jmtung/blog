@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.jmtung.cn/"/>
-  <updated>2019-07-04T16:40:18.664Z</updated>
+  <updated>2019-07-04T16:41:49.071Z</updated>
   <id>http://blog.jmtung.cn/</id>
   
   <author>
@@ -21,19 +21,20 @@
     <link href="http://blog.jmtung.cn/2019/07/04/trim%E8%BF%87%E6%BB%A4%E4%B8%8D%E6%8E%89%E7%9A%84%E7%A9%BA%E7%99%BD%E5%AD%97%E7%AC%A6/"/>
     <id>http://blog.jmtung.cn/2019/07/04/trim过滤不掉的空白字符/</id>
     <published>2019-07-04T15:38:27.000Z</published>
-    <updated>2019-07-04T16:40:18.664Z</updated>
+    <updated>2019-07-04T16:41:49.071Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;上两周老大丢个bug过来：过滤学生名单学生名字两侧的空格。我就想还有&lt;code&gt;trim&lt;/code&gt;搞不定的空白符吗，吓得我赶紧翻下&lt;code&gt;trim&lt;/code&gt;的说明书：&lt;/p&gt;
+      &lt;p&gt;上两周老大丢个bug过来：过滤学生名单学生名字两侧的空格。我就想还有&lt;code&gt;trim&lt;/code&gt;搞不定的空白符吗，吓得我赶紧翻下&lt;code&gt;trim&lt;/code&gt;的说明书：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;此函数返回字符串 &lt;code&gt;str&lt;/code&gt;
-        
-      
+&lt;p&gt;此函数返回字符串 &lt;code&gt;str&lt;/code&gt; 去除首尾空白字符后的结果。如果不指定第二个参数，&lt;strong&gt;trim()&lt;/strong&gt; 将去除这些字符：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“ “ (ASCII &lt;em&gt;32&lt;/em&gt; (&lt;em&gt;0x20&lt;/em&gt;))，普通空格符。&lt;/li&gt;
+&lt;li&gt;“\t” (ASCII &lt;em&gt;9&lt;/em&gt; (&lt;em&gt;0x09&lt;/em&gt;))，制表符。&lt;/li&gt;
+&lt;li&gt;“\n” (ASCII &lt;em&gt;10&lt;/em&gt; (&lt;em&gt;0x0A&lt;/em&gt;))，换行符。&lt;/li&gt;
+&lt;li&gt;“\r” (ASCII &lt;em&gt;13&lt;/em&gt; (&lt;em&gt;0x0D&lt;/em&gt;))，回车符。&lt;/li&gt;
+&lt;li&gt;“\0” (ASCII &lt;em&gt;0&lt;/em&gt; (&lt;em&gt;0x00&lt;/em&gt;))，空字节符。&lt;/li&gt;
+&lt;li&gt;“\x0B” (ASCII &lt;em&gt;11&lt;/em&gt; (&lt;em&gt;0x0B&lt;/em&gt;))，垂直制表符。
     
     </summary>
     

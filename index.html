@@ -302,7 +302,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-07-05T00:40:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-07-05T00:41:49+08:00">
                 2019-07-05
               </time>
             
@@ -348,8 +348,7 @@
 
       
         
-          
-            <p>上两周老大丢个bug过来：过滤学生名单学生名字两侧的空格。我就想还有<code>trim</code>搞不定的空白符吗，吓得我赶紧翻下<code>trim</code>的说明书：</p>
+          <p>上两周老大丢个bug过来：过滤学生名单学生名字两侧的空格。我就想还有<code>trim</code>搞不定的空白符吗，吓得我赶紧翻下<code>trim</code>的说明书：</p>
 <blockquote>
 <p>此函数返回字符串 <code>str</code> 去除首尾空白字符后的结果。如果不指定第二个参数，<strong>trim()</strong> 将去除这些字符：</p>
 <ul>
@@ -358,21 +357,14 @@
 <li>“\n” (ASCII <em>10</em> (<em>0x0A</em>))，换行符。</li>
 <li>“\r” (ASCII <em>13</em> (<em>0x0D</em>))，回车符。</li>
 <li>“\0” (ASCII <em>0</em> (<em>0x00</em>))，空字节符。</li>
-<li>“\x0B” (ASCII <em>11</em> (<em>0x0B</em>))，垂直制表符。</li>
-</ul>
-</blockquote>
-<p>哦嚯，难道除了上面这些，还有别的空白符？骚年，这世界这么大，你不知道的事多得很呢。随后老大又丢个参考文章给我，看了下还行，整理下大概解决思路。</p>
-<h2 id="简单点的方法"><a href="#简单点的方法" class="headerlink" title="简单点的方法"></a>简单点的方法</h2><p>如果只是想过滤某个特殊空白字符如” abc “，只需把两侧的特殊空白字符复制一下，用<code>str_replace</code>函数换掉就完事了。</p>
-<h2 id="通用点的方法"><a href="#通用点的方法" class="headerlink" title="通用点的方法"></a>通用点的方法</h2><p>或者说我们可以写个<code>trim</code>的加强版，把遇到的特殊空白字符也过滤掉。</p>
-<h3 id="找出空白字符"><a href="#找出空白字符" class="headerlink" title="找出空白字符"></a>找出空白字符</h3><p>拿” abcabc”为例，先用<code>str_split</code>函数将字符串按字节分割成一个字节数组，打印整个数组，观察每个字节的ASCII码。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$str = <span class="string">" abcabc"</span>;</span><br><span class="line">$arr = str_split($str);</span><br><span class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $byte)&#123;</span><br><span class="line">    var_dump(ord($byte));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// int(194)</span></span><br><span class="line"><span class="comment">// int(160)</span></span><br><span class="line"><span class="comment">// int(97)</span></span><br><span class="line"><span class="comment">// int(98)</span></span><br><span class="line"><span class="comment">// int(99)</span></span><br><span class="line"><span class="comment">// int(97)</span></span><br><span class="line"><span class="comment">// int(98)</span></span><br><span class="line"><span class="comment">// int(99)</span></span><br></pre></td></tr></table></figure>
-<p>由于’a’的ASCII码为97，不易看出，ASCII为194+160的组合构成了这个特殊空白字符</p>
-<h3 id="去除空白字符"><a href="#去除空白字符" class="headerlink" title="去除空白字符"></a>去除空白字符</h3><p>确定了空白字符对应ASCII码后，我们很容易地定位编写正则过滤相关字符：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preg_replace(<span class="string">"/^[\s\v"</span>.chr(<span class="number">194</span>).chr(<span class="number">160</span>).<span class="string">"]+/"</span>,<span class="string">""</span>, $str);</span><br></pre></td></tr></table></figure>
-<p>当然我们可以编写一个更为通用的方法扩展更多的特殊空白符</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">trimPlus</span><span class="params">($strContent)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 特殊字符列表</span></span><br><span class="line">    $arrCase = <span class="keyword">array</span>(</span><br><span class="line">        chr(<span class="number">226</span>) . chr(<span class="number">128</span>) . chr(<span class="number">131</span>), <span class="comment">// 全角空格</span></span><br><span class="line">        chr(<span class="number">226</span>) . chr(<span class="number">128</span>) . chr(<span class="number">130</span>), <span class="comment">// 半角空格</span></span><br><span class="line">        chr(<span class="number">194</span>) . chr(<span class="number">160</span>), <span class="comment">// utf-8的特殊空白字符</span></span><br><span class="line">        <span class="comment">// ...后面有更多特殊空白符继续添加</span></span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    $strEmpty=implode(<span class="string">'|'</span>,$arrCase);</span><br><span class="line"></span><br><span class="line">    $strContent = preg_replace(<span class="string">"/^(\s|\v|$strEmpty)+/"</span>, <span class="string">""</span>, $strContent);</span><br><span class="line">    $strContent = preg_replace(<span class="string">"/(\s|\v|$strEmpty)+$/"</span>, <span class="string">""</span>, $strContent);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> $strContent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+<li>“\x0B” (ASCII <em>11</em> (<em>0x0B</em>))，垂直制表符。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/07/04/trim过滤不掉的空白字符/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

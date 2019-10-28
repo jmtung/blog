@@ -255,6 +255,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.jmtung.cn/2019/09/12/Innodb-checkpoint/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jimmy">
+      <meta itemprop="description" content="Just let time go on">
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="翠竹凝梦">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/12/Innodb-checkpoint/" itemprop="url">Innodb checkpoint</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-12T00:25:00+08:00">
+                2019-09-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-29T00:30:25+08:00">
+                2019-10-29
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/09/12/Innodb-checkpoint/" class="leancloud_visitors" data-flag-title="Innodb checkpoint">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Innodb-checkpoint"><a href="#Innodb-checkpoint" class="headerlink" title="Innodb checkpoint"></a>Innodb checkpoint</h1><blockquote>
+<p>checkpoint就是mysql将脏页数据刷到磁盘的时机 innodb有两种checkpoint</p>
+</blockquote>
+<h2 id="Sharp-Checkpoint"><a href="#Sharp-Checkpoint" class="headerlink" title="Sharp Checkpoint"></a>Sharp Checkpoint</h2><p>在数据库关闭时全量刷脏页数据到磁盘</p>
+<h2 id="Fuzzy-Checkpoint"><a href="#Fuzzy-Checkpoint" class="headerlink" title="Fuzzy Checkpoint"></a>Fuzzy Checkpoint</h2><p>在数据库运行时分情况刷部分脏页数据 有以下情况</p>
+<h3 id="Master-Thread-Checkpoint"><a href="#Master-Thread-Checkpoint" class="headerlink" title="Master Thread Checkpoint"></a>Master Thread Checkpoint</h3><p>以每秒或每几十秒的速度从buffer pool中异步刷一定比例的脏页数据到磁盘</p>
+<h3 id="FLUSH-LRU-LIST-Checkpoint"><a href="#FLUSH-LRU-LIST-Checkpoint" class="headerlink" title="FLUSH_LRU_LIST Checkpoint"></a>FLUSH_LRU_LIST Checkpoint</h3><p>为保证LRU列表有足够多的空闲页，往往会淘汰最久未被使用数据，如果淘汰的数据页是脏页，需要进行Checkpoint</p>
+<h3 id="Async-Sync-Flush-Checkpoint"><a href="#Async-Sync-Flush-Checkpoint" class="headerlink" title="Async/Sync Flush Checkpoint"></a>Async/Sync Flush Checkpoint</h3><p>redo log不可用(满)的情况下，强制刷部分页到磁盘</p>
+<p>记 <code>redo_lsn</code> 为写入到redo log中最新记录的LSN ,<code>checkpoint_lsn</code> 为刷新回磁盘最新页的LSN</p>
+<p>有 <code>checkpoint_age</code> = <code>redo_lsn</code>-<code>checkpoint_lsn</code></p>
+<p>再记</p>
+<p>异步刷新水位 <code>async_water_mark</code> = 75% * <code>total_redo_log_file_size</code></p>
+<p>同步刷新水位 <code>sync_water_mark</code> = 90% * <code>total_redo_log_file_size</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> checkpoint_age&lt;async_water_mark</span><br><span class="line">   // do nothing...</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> checkpoiny_age between async_water_mark <span class="keyword">and</span> sync_water_mark</span><br><span class="line">   // block current thread <span class="keyword">and</span> flush dirty page <span class="keyword">async</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">   // block all thread <span class="keyword">and</span> flush dirty page synce</span><br></pre></td></tr></table></figure>
+<h3 id="Dirty-Page-Too-much-Checkpoint"><a href="#Dirty-Page-Too-much-Checkpoint" class="headerlink" title="Dirty Page Too much Checkpoint"></a>Dirty Page Too much Checkpoint</h3><p>脏页太多了，强制刷磁盘</p>
+<p>受 <code>innodb_max_dirty_pages_pct</code> 参数(单位百分比)控制</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+       
+    
+       
+         
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.jmtung.cn/2019/07/04/trim过滤不掉的空白字符/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1054,7 +1214,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1067,7 +1227,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
